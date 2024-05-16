@@ -78,6 +78,75 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="p-4 md:w-1/3">
+                <div className="h-full shadow-lg hover:-translate-y-1 cursor-pointer hover:shadow-gray-400 rounded-xl overflow-hidden">
+                  <img
+                    className="w-full"
+                    src="https://cdn.pixabay.com/photo/2024/05/08/16/27/factory-8748621_640.jpg"
+                    alt="blog"
+                  />
+                  <div className="p-6">
+                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                      25 Sep 2023
+                    </h2>
+                    <h1 className="title-font text-lg font-bold text-gray-900 mb-3">
+                      Nature's Healing Power
+                    </h1>
+                    <p className="leading-relaxed mb-3">
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Vitae autem tenetur asperiores.
+                    </p>
+                    <div className="flex items-center justify-end"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 md:w-1/3">
+                <div className="h-full shadow-lg hover:-translate-y-1 cursor-pointer hover:shadow-gray-400 rounded-xl overflow-hidden">
+                  <img
+                    className="w-full"
+                    src="https://cdn.pixabay.com/photo/2024/05/11/07/46/bird-8754208_1280.jpg"
+                    alt="blog"
+                  />
+                  <div className="p-6">
+                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                      25 Sep 2023
+                    </h2>
+                    <h1 className="title-font text-lg font-bold text-gray-900 mb-3">
+                      In Harmony With Nature
+                    </h1>
+                    <p className="leading-relaxed mb-3">
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Vitae autem tenetur asperiores.
+                    </p>
+                    <div className="flex items-center justify-end"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 md:w-1/3">
+                <div className="h-full shadow-lg hover:-translate-y-1 cursor-pointer hover:shadow-gray-400 rounded-xl overflow-hidden">
+                  <img
+                    className="w-full"
+                    src="https://cdn.pixabay.com/photo/2024/05/05/05/55/goose-8740266_640.jpg"
+                    alt="blog"
+                  />
+                  <div className="p-6">
+                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                      25 Sep 2023
+                    </h2>
+                    <h1 className="title-font text-lg font-bold text-gray-900 mb-3">
+                      Adventures in Wilderness
+                    </h1>
+                    <p className="leading-relaxed mb-3">
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Vitae autem tenetur asperiores.
+                    </p>
+                    <div className="flex items-center justify-end"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
