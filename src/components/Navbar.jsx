@@ -11,10 +11,7 @@ const menuItems = [
     name: "Blog",
     href: "/bloglist",
   },
-  {
-    name: "BlogDetail",
-    href: "/blogdetail/:id",
-  },
+
   {
     name: "Contact",
     href: "/contact",
