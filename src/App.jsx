@@ -8,6 +8,7 @@ import { Navbar } from "./components/Navbar";
 import { SignUp } from "./components/SignUp";
 import { Login } from "./components/Login";
 import { Footer } from "./components/Footer";
+import CreateBlog from "./components/CreateBlog";
 
 const App = () => {
   return (
@@ -18,9 +19,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/bloglist" element={<BlogList />} />
-          <Route path="/detail" element={<BlogDetail />} />
+          <Route path="/blogdetail/:id" element={<BlogDetail />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/create" element={<CreateBlog />} />
         </Routes>
         <Footer />
       </BrowserRouter>

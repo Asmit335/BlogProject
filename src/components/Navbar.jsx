@@ -8,12 +8,12 @@ const menuItems = [
     href: "/",
   },
   {
-    name: "BlogList",
+    name: "Blog",
     href: "/bloglist",
   },
   {
     name: "BlogDetail",
-    href: "/detail",
+    href: "/blogdetail/:id",
   },
   {
     name: "Contact",
@@ -65,9 +65,15 @@ export function Navbar() {
         <div className="hidden lg:block">
           <Link
             to="/signup"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black mr-2"
           >
             SignUp
+          </Link>
+          <Link
+            to="/create"
+            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black "
+          >
+            Add
           </Link>
         </div>
         <div className="lg:hidden">
@@ -121,12 +127,19 @@ export function Navbar() {
                     ))}
                   </nav>
                 </div>
-                <button
+                <Link
+                  to="/signup"
+                  className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black mr-2  "
+                >
+                  SignUp
+                </Link>
+                <Link
+                  to="/create"
                   type="button"
                   className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                 >
-                  Button text
-                </button>
+                  Add
+                </Link>
               </div>
             </div>
           </div>
