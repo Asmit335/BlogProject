@@ -1,5 +1,6 @@
 import { Button } from "@material-tailwind/react";
 import React from "react";
+import { Pagination } from "./Pagination";
 
 function BlogList() {
   return (
@@ -144,6 +145,7 @@ function BlogList() {
           </div>
         </div>
       </section>
+      <Pagination />
     </div>
   );
 }

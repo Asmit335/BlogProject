@@ -43,10 +43,6 @@ function CreateBlog() {
     }
   };
 
-  function createMarkup(c) {
-    return { __html: c };
-  }
-
   return (
     <div className="container mx-auto max-w-5xl py-6">
       <div className="p-5">
