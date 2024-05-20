@@ -113,7 +113,7 @@ export function Contact() {
           </div>
         </div>
 
-        <section className="relative h-0 pb-9/16">
+        {/* <section className="relative h-0 pb-9/16">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.678827325267!2d85.28316177517179!3d27.72720102461605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e559fe5ee7%3A0xc27c03a2c06e3240!2sSaptacode%20Technology!5e0!3m2!1sen!2snp!4v1715834725504!5m2!1sen!2snp"
             width="100%"
@@ -123,7 +123,7 @@ export function Contact() {
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
-        </section>
+        </section> */}
       </div>
     </div>
   );

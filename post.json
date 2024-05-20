@@ -1,0 +1,71 @@
+[{
+        "id": "1",
+        "image": "https://cdn.pixabay.com/photo/2024/04/08/10/36/podcast-8683196_640.jpg",
+        "title": "The Art of Mindfulness",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 3
+    },
+    {
+        "id": "2",
+        "image": "https://cdn.pixabay.com/photo/2024/05/05/05/55/goose-8740266_640.jpg",
+        "title": "Adventures in Wilderness",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 3
+    },
+    {
+        "id": "3",
+        "image": "https://cdn.pixabay.com/photo/2017/02/21/06/14/web-page-2084779_640.png",
+        "title": "Unraveling the Mysteries of Quantum Computing",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 3
+    },
+    {
+        "id": "4",
+        "image": "https://cdn.pixabay.com/photo/2017/02/21/06/14/web-page-2084779_640.png",
+        "title": "Exploring the Hidden Gems of Southeast Asia",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 3
+    },
+    {
+        "id": "5",
+        "image": "https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "A Journey Through the Alps",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 4
+    },
+    {
+        "id": "6",
+        "image": "https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "The Future of Artificial Intelligence",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 5
+    },
+    {
+        "id": "7",
+        "image": "https://images.pexels.com/photos/4240606/pexels-photo-4240606.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "Capturing the Perfect Sunset",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 6
+    },
+    {
+        "id": "8",
+        "image": "https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "Robotics in Modern Medicine",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 7
+    },
+    {
+        "id": "9",
+        "image": "https://images.pexels.com/photos/6953836/pexels-photo-6953836.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "A Guide to Vlogging",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 8
+    },
+    {
+        "id": "10",
+        "image": "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "The Benefits of Daily Exercise",
+        "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit Vitae autem tenetur asperiores",
+        "authorId": 9
+    }
+]
