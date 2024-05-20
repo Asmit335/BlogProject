@@ -8,12 +8,12 @@ const PostDetail = () => {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">This is the Post Title</h1>
           <div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+            <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
               Edit
-            </button>
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            </Link>
+            <Link className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               Delete
-            </button>
+            </Link>
           </div>
         </div>
         <div className="flex items-center mb-6">
