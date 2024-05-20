@@ -1,14 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const PostDetail = () => {
+  const { id } = useParams();
+
   return (
     <div className="container mx-auto p-6 max-w-4xl">
       <section className="bg-white p-8 rounded-lg shadow-lg">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">This is the Post Title</h1>
           <div>
-            <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+            <Link
+              to={`/edit/${id}`}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+            >
               Edit
             </Link>
             <Link className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">

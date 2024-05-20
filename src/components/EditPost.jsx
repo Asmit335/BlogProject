@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Typography } from "@material-tailwind/react";
 import { toast } from "react-toastify";
 
-function CreateBlog() {
+function EditPost() {
   const [blogs, setBlogs] = useState({
     title: "",
     // category: "",
@@ -51,7 +51,7 @@ function CreateBlog() {
             <Link to="/">
               <BsFillArrowLeftCircleFill size={25} />
             </Link>
-            <Typography variant="h4">Create blog</Typography>
+            <Typography variant="h4">Edit blog</Typography>
           </div>
         </div>
 
@@ -121,11 +121,11 @@ function CreateBlog() {
           onClick={addPost}
           className="mt-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
         >
-          Send
+          Update
         </Button>
       </div>
     </div>
   );
 }
 
-export default CreateBlog;
+export default EditPost;

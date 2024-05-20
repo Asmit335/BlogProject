@@ -12,6 +12,7 @@ import Post from "./components/Post";
 import "react-toastify/dist/ReactToastify.css";
 import PostDetail from "./components/PostDetail";
 import Authors from "./components/Authors";
+import EditPost from "./components/EditPost";
 const App = () => {
   return (
     <>
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/create" element={<CreateBlog />} />
           <Route path="/detail/:id" element={<PostDetail />} />
           <Route path="/author" element={<Authors />} />
+          <Route path="/edit/:id" element={<EditPost />} />
         </Routes>
         <Footer />
         <ToastContainer />
