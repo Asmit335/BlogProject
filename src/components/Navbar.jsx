@@ -19,10 +19,10 @@ const menuItems = [
     name: "Author",
     href: "/author",
   },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
+  // {
+  //   name: "Contact",
+  //   href: "/contact",
+  // },
 ];
 
 export function Navbar() {
@@ -67,18 +67,12 @@ export function Navbar() {
           </ul>
         </div>
         <div className="hidden lg:block">
-          <Link
+          {/* <Link
             to="/signup"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black mr-2"
           >
             SignUp
-          </Link>
-          <Link
-            to="/create"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black "
-          >
-            Add
-          </Link>
+          </Link> */}
         </div>
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />

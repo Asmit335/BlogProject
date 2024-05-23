@@ -3,6 +3,7 @@ import { Pagination } from "./Pagination";
 import posts from "../../post.json";
 import authors from "../../authors.json";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 function mergePostsAndAuthors(posts, authors) {
   return posts.map((post) => {
@@ -22,19 +23,32 @@ const postsWithAuthors = mergePostsAndAuthors(posts, authors);
 function Post() {
   const [postsData, setPostsData] = useState(postsWithAuthors);
 
+  const fetctPost = async () => {
+    const response = await fetch("http://localhost:5050/api/blogs");
+    return response.json();
+  };
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetctPost,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error:{error.message}</div>;
+
   return (
     <div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-10 mx-auto max-w-7xl">
-          {postsData.length > 0 ? (
+          {data.length > 0 ? (
             <div className="flex flex-wrap justify-center -m-4 mb-5">
-              {postsData.map((post) => (
+              {data.map((post) => (
                 <div key={post.id} className="p-4 md:w-1/3">
                   <Link to={`/detail/${post.id}`}>
                     <div className="h-full shadow-lg hover:-translate-y-1 cursor-pointer hover:shadow-gray-400 rounded-xl overflow-hidden">
                       <img
                         className="w-full h-48 object-cover"
-                        src={post.image}
+                        // src={post.image}
+                        src="https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600"
                         alt={post.title}
                       />
                       <div className="p-6">
@@ -54,8 +68,9 @@ function Post() {
                             alt={post.authorName}
                           />
                           <div className="text-sm">
-                            <p className="text-gray-900 leading-none font-bold">
-                              {post.authorName}
+                            <p className="text-gray-700 leading-none font-bold">
+                              By Asmit
+                              {/* {post.authorName} */}
                             </p>
                           </div>
                         </div>

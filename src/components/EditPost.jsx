@@ -20,8 +20,8 @@ function EditPost() {
     try {
       if (
         blogs.title === "" ||
-        blogs.category === "" ||
-        // blogs.content === "" ||
+        // blogs.category === "" ||
+        blogs.content === "" ||
         !thumbnail
       ) {
         throw new Error("Please Fill All Fields");
@@ -59,9 +59,10 @@ function EditPost() {
           {thumbnail && (
             <img
               className="w-full h-auto rounded-md mb-3"
-              src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
+              // src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
+              src="https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600"
               alt="thumbnail"
-              style={{ maxWidth: "1200px", height: "20rem" }}
+              style={{ width: "700px", height: "20rem" }}
             />
           )}
 

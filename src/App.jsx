@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PostDetail from "./components/PostDetail";
 import Authors from "./components/Authors";
 import EditPost from "./components/EditPost";
+import Test from "./components/Test";
 const App = () => {
   return (
     <>
@@ -26,8 +27,9 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<CreateBlog />} />
           <Route path="/detail/:id" element={<PostDetail />} />
-          <Route path="/author" element={<Authors />} />
           <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/author" element={<Authors />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
         <Footer />
         <ToastContainer />

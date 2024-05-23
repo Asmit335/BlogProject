@@ -4,6 +4,7 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Typography } from "@material-tailwind/react";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 function CreateBlog() {
   const [blogs, setBlogs] = useState({
@@ -16,12 +17,13 @@ function CreateBlog() {
 
   const navigate = useNavigate();
 
-  const addPost = async () => {
+  const addPost = async (e) => {
+    e.preventDefault();
     try {
       if (
         blogs.title === "" ||
-        blogs.category === "" ||
-        // blogs.content === "" ||
+        // blogs.category === "" ||
+        blogs.content === "" ||
         !thumbnail
       ) {
         throw new Error("Please Fill All Fields");
@@ -59,9 +61,10 @@ function CreateBlog() {
           {thumbnail && (
             <img
               className="w-full h-auto rounded-md mb-3"
-              src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
+              // src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
+              src="https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600"
               alt="thumbnail"
-              style={{ maxWidth: "1200px", height: "20rem" }}
+              style={{ width: "700px", height: "20rem" }}
             />
           )}
 
@@ -91,17 +94,6 @@ function CreateBlog() {
             onChange={(e) => setBlogs({ ...blogs, title: e.target.value })}
           />
         </div>
-
-        {/* <div className="mb-3">
-          <input
-            type="text"
-            className="shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 outline-none"
-            placeholder="Enter Your Category"
-            name="category"
-            value={blogs.category}
-            onChange={(e) => setBlogs({ ...blogs, category: e.target.value })}
-          />
-        </div> */}
 
         <Editor
           apiKey="gvr5gi48v8rcjl51t2owuin4omsi7yry36oivczrehkhldro"
