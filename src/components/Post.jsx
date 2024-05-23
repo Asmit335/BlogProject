@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 function Post() {
   const fetchPost = async () => {
-    const response = await fetch("http://localhost:5050/api/blogs");
+    const response = await fetch("http://localhost:5050/api/blog");
     return response.json();
   };
   const { data, isLoading, isError, error } = useQuery({

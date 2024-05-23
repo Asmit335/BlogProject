@@ -6,7 +6,7 @@ const PostDetail = () => {
   const { id } = useParams();
 
   const fetchsinglePost = async () => {
-    const response = await fetch(`http://localhost:5050/api/blogs/${id}`);
+    const response = await fetch(`http://localhost:5050/api/blog/${id}`);
     return response.json();
   };
 

@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
-
-const fetctData = async () => {
-  const response = await fetch("https://dummyjson.com/products");
-  const data = await response.json();
-  return data.products;
-};
+import { Link } from "react-router-dom";
 
 const Test = () => {
-  const {
-    isLoading,
-    isError,
-    error,
-    data: products,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: fetctData,
+  const fetchData = async () => {
+    const resp = await fetch(`https://dummyjson.com/products`);
+    return resp.json();
+  };
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["keysss"],
+    queryFn: fetchData,
     staleTime: 1000,
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error{error.message}</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error:{error.message}</div>;
 
   return (
     <div className="bg-white">
@@ -35,15 +25,17 @@ const Test = () => {
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
+          {data.products.map((product) => (
             <div key={product.id} className="group relative">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                />
-              </div>
+              <Link to={`/product/${product.id}`}>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                  <img
+                    src={product.thumbnail}
+                    alt={product.title}
+                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                  />
+                </div>
+              </Link>
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">

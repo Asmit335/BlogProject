@@ -1,40 +1,39 @@
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Typography } from "@material-tailwind/react";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 function EditPost() {
   const [blogs, setBlogs] = useState({
     title: "",
-    // category: "",
     content: "",
     thumbnail: null,
   });
   const [thumbnail, setThumbnail] = useState(null);
+  const { id } = useParams();
 
   const navigate = useNavigate();
+  const fetchPost = async () => {
+    const response = await fetch("http://localhost:5050/api/blog");
+    return response.json();
+  };
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["posts", id],
+    queryFn: () => fetchPost(id),
+  });
 
-  const addPost = async () => {
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error:{error.message}</div>;
+
+  const handleEditPost = async () => {
     try {
-      if (
-        blogs.title === "" ||
-        // blogs.category === "" ||
-        blogs.content === "" ||
-        !thumbnail
-      ) {
+      if (blogs.title === "" || blogs.content === "" || !thumbnail) {
         throw new Error("Please Fill All Fields");
       }
 
-      uploadImage();
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
-
-  const uploadImage = () => {
-    try {
       navigate("/");
 
       toast.success("Post Added Successfully");
@@ -42,7 +41,7 @@ function EditPost() {
       toast.error(error.message);
     }
   };
-
+  console.log("blog:", blogs);
   return (
     <div className="container mx-auto max-w-5xl py-6">
       <div className="p-5">
@@ -93,24 +92,11 @@ function EditPost() {
           />
         </div>
 
-        {/* <div className="mb-3">
-          <input
-            type="text"
-            className="shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 outline-none"
-            placeholder="Enter Your Category"
-            name="category"
-            value={blogs.category}
-            onChange={(e) => setBlogs({ ...blogs, category: e.target.value })}
-          />
-        </div> */}
-
         <Editor
           apiKey="gvr5gi48v8rcjl51t2owuin4omsi7yry36oivczrehkhldro"
           onEditorChange={(newValue, editor) => {
             setBlogs({ ...blogs, content: newValue });
           }}
-          onInit={(evt, editor) => {}}
-          init={{}}
         />
 
         <Button
@@ -119,7 +105,7 @@ function EditPost() {
           size="lg"
           block={true}
           ripple="light"
-          onClick={addPost}
+          onClick={handleEditPost}
           className="mt-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
         >
           Update

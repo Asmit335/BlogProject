@@ -17,7 +17,7 @@ function CreateBlog() {
   const navigate = useNavigate();
 
   const creatPost = async () => {
-    const response = await fetch("http://localhost:5050/api/blogs", {
+    const response = await fetch("http://localhost:5050/api/blog", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,8 +33,8 @@ function CreateBlog() {
   const creatMutationPost = useMutation({
     mutationFn: creatPost,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
-      console.log("Success Bro!");
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      console.log("Success Post!");
     },
   });
 
