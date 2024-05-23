@@ -56,15 +56,15 @@ function EditPost() {
         </div>
 
         <div className="mb-3">
-          {thumbnail && (
-            <img
-              className="w-full h-auto rounded-md mb-3"
-              // src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
-              src="https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="thumbnail"
-              style={{ width: "700px", height: "20rem" }}
-            />
-          )}
+          {/* {thumbnail && ( */}
+          <img
+            className="w-full h-auto rounded-md mb-3"
+            // src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
+            src="https://source.unsplash.com/random/?blogs"
+            alt="thumbnail"
+            style={{ width: "700px", height: "20rem" }}
+          />
+          {/* )} */}
 
           <Typography
             variant="small"

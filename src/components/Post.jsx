@@ -1,35 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pagination } from "./Pagination";
-import posts from "../../post.json";
-import authors from "../../authors.json";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-function mergePostsAndAuthors(posts, authors) {
-  return posts.map((post) => {
-    const author = authors.find((author) => author.id === post.authorId);
-    return {
-      ...post,
-      authorName: author ? author.name : "Unknown",
-      authorImage: author
-        ? author.image
-        : "https://example.com/defaultauthor.jpg",
-    };
-  });
-}
-
-const postsWithAuthors = mergePostsAndAuthors(posts, authors);
-
 function Post() {
-  const [postsData, setPostsData] = useState(postsWithAuthors);
-
-  const fetctPost = async () => {
+  const fetchPost = async () => {
     const response = await fetch("http://localhost:5050/api/blogs");
     return response.json();
   };
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["posts"],
-    queryFn: fetctPost,
+    queryFn: fetchPost,
   });
 
   if (isLoading) return <div>Loading...</div>;
@@ -43,12 +24,12 @@ function Post() {
             <div className="flex flex-wrap justify-center -m-4 mb-5">
               {data.map((post) => (
                 <div key={post.id} className="p-4 md:w-1/3">
-                  <Link to={`/detail/${post.id}`}>
+                  <Link to={`/detail/${post._id}`}>
                     <div className="h-full shadow-lg hover:-translate-y-1 cursor-pointer hover:shadow-gray-400 rounded-xl overflow-hidden">
                       <img
                         className="w-full h-48 object-cover"
                         // src={post.image}
-                        src="https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        src="https://source.unsplash.com/random/?blogs"
                         alt={post.title}
                       />
                       <div className="p-6">
@@ -89,7 +70,7 @@ function Post() {
           )}
         </div>
       </section>
-      {postsData.length > 0 && <Pagination />}
+      {data.length > 0 && <Pagination />}
     </div>
   );
 }

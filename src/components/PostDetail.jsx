@@ -1,14 +1,28 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 const PostDetail = () => {
   const { id } = useParams();
 
+  const fetchsinglePost = async () => {
+    const response = await fetch(`http://localhost:5050/api/blogs/${id}`);
+    return response.json();
+  };
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["key"],
+    queryFn: () => fetchsinglePost(id),
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error:{error.message}</div>;
+
   return (
     <div className="container mx-auto p-6 max-w-4xl">
       <section className="bg-white p-8 rounded-lg shadow-lg">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">This is the Post Title</h1>
+          <h1 className="text-3xl font-bold">{data.blog.title}</h1>
           <div>
             <Link
               to={`/edit/${id}`}
@@ -24,7 +38,8 @@ const PostDetail = () => {
         <div className="flex items-center mb-6">
           <img
             className="w-12 h-12 rounded-full mr-4"
-            src="https://img.freepik.com/premium-photo/colllege-student-with-laptop_443637-6.jpg?size=626&ext=jpg&ga=GA1.1.1067460792.1716131878&semt=sph"
+            // src="https://img.freepik.com/premium-photo/colllege-student-with-laptop_443637-6.jpg?size=626&ext=jpg&ga=GA1.1.1067460792.1716131878&semt=sph"
+            src="https://source.unsplash.com/random/?blogs"
             alt="Author"
           />
           <div>
@@ -36,10 +51,12 @@ const PostDetail = () => {
         </div>
         <img
           className="w-full h-auto max-h-[400px] object-cover rounded-lg mb-6"
-          src="https://cdn.pixabay.com/photo/2024/04/08/10/36/podcast-8683196_640.jpg"
+          // src="https://cdn.pixabay.com/photo/2024/04/08/10/36/podcast-8683196_640.jpg"
+          src="https://source.unsplash.com/random/?blogs"
           alt="Post"
         />
         <div className="prose">
+          <p>{data.blog.content}</p>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Repudiandae asperiores quia tenetur consectetur adipisci iusto?

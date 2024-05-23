@@ -4,12 +4,11 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Typography } from "@material-tailwind/react";
 import { toast } from "react-toastify";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, QueryClient } from "@tanstack/react-query";
 
 function CreateBlog() {
   const [blogs, setBlogs] = useState({
     title: "",
-    // category: "",
     content: "",
     thumbnail: null,
   });
@@ -17,28 +16,39 @@ function CreateBlog() {
 
   const navigate = useNavigate();
 
-  const addPost = async (e) => {
+  const creatPost = async () => {
+    const response = await fetch("http://localhost:5050/api/blogs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(blogs),
+    });
+
+    return response.json();
+  };
+
+  const queryClient = new QueryClient();
+
+  const creatMutationPost = useMutation({
+    mutationFn: creatPost,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      console.log("Success Bro!");
+    },
+  });
+
+  const handleAddPost = async (e) => {
     e.preventDefault();
     try {
-      if (
-        blogs.title === "" ||
-        // blogs.category === "" ||
-        blogs.content === "" ||
-        !thumbnail
-      ) {
+      if (blogs.title === "" || blogs.content === "") {
         throw new Error("Please Fill All Fields");
       }
 
-      uploadImage();
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+      console.log("blogcontent:", blogs);
+      creatMutationPost.mutate();
 
-  const uploadImage = () => {
-    try {
       navigate("/");
-
       toast.success("Post Added Successfully");
     } catch (error) {
       toast.error(error.message);
@@ -62,7 +72,7 @@ function CreateBlog() {
             <img
               className="w-full h-auto rounded-md mb-3"
               // src={thumbnail ? URL.createObjectURL(thumbnail) : ""}
-              src="https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="https://source.unsplash.com/random/?blogs"
               alt="thumbnail"
               style={{ width: "700px", height: "20rem" }}
             />
@@ -100,8 +110,6 @@ function CreateBlog() {
           onEditorChange={(newValue, editor) => {
             setBlogs({ ...blogs, content: newValue });
           }}
-          onInit={(evt, editor) => {}}
-          init={{}}
         />
 
         <Button
@@ -110,10 +118,10 @@ function CreateBlog() {
           size="lg"
           block={true}
           ripple="light"
-          onClick={addPost}
+          onClick={handleAddPost}
           className="mt-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
         >
-          Send
+          Post
         </Button>
       </div>
     </div>
