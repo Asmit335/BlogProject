@@ -1,21 +1,27 @@
-import React from "react";
-import { Pagination } from "./Pagination";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 function Post() {
+  const [limit, setLimit] = useState(4);
+  const [skip, setSkip] = useState(0);
   const fetchPost = async () => {
-    const response = await fetch("http://localhost:5050/api/blog");
+    const response = await fetch(
+      `http://localhost:5050/api/blog?limit=${limit}&skip=${skip}`
+    );
     return response.json();
   };
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["posts"],
+    queryKey: ["posts", limit, skip],
     queryFn: fetchPost,
   });
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error:{error.message}</div>;
 
+  const handleMove = (moveCount) => {
+    setSkip((prevSkip) => Math.max(prevSkip + moveCount, 0));
+  };
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -69,8 +75,21 @@ function Post() {
             </div>
           )}
         </div>
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => handleMove(-limit)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md mr-2 hover:bg-blue-700"
+          >
+            Prev
+          </button>
+          <button
+            onClick={() => handleMove(limit)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          >
+            Next
+          </button>
+        </div>
       </section>
-      {data.length > 0 && <Pagination />}
     </div>
   );
 }

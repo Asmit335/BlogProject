@@ -14,7 +14,6 @@ import PostDetail from "./components/PostDetail";
 import Authors from "./components/Authors";
 import EditPost from "./components/EditPost";
 import Test from "./components/Test";
-import Product from "./components/Product";
 const App = () => {
   return (
     <>
@@ -31,7 +30,6 @@ const App = () => {
           <Route path="/edit/:id" element={<EditPost />} />
           <Route path="/author" element={<Authors />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/product/:id" element={<Product />} />
         </Routes>
         <Footer />
         <ToastContainer />
